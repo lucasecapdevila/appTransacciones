@@ -3,11 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 const cargarTransacciones = () =>{
     const transaccionesAlmacenadas = localStorage.getItem("transacciones")
     return transaccionesAlmacenadas ? JSON.parse(transaccionesAlmacenadas) : []
-}
+};
 
 const guardarTransaccion = (transacciones) =>{
-    localStorage.etIem("transacciones", JSON.stringify(turnos))
-}
+    localStorage.setItem("transacciones", JSON.stringify(transacciones))
+};
+
+/*const eliminarTransaccion = (id) => {
+    
+};*/
 
 
 const transaccionSlice = createSlice({
@@ -16,21 +20,32 @@ const transaccionSlice = createSlice({
     reducers: {
         agregarTransaccion: (state, action) => {
             state.unshift(action.payload)
-            guardarTransaccion(state)
+            guardarTransaccion(state);
         },
         
         editarTransaccion: (state, action) => {
-            const {id, categoria} = action.payload;
-            const transacciones = state.find((transaccion) => 
-                transaccion.id === id ? action.payload : transaccion);
+            const {id, descripcion, monto, categoria, fecha} = action.payload;
+            const campo = state.findIndex((transaccion => transaccion.id === id));
+            if (campo !== -1){
+                state[campo] = {
+                    ...state[campo],
+                    descripcion,
+                    monto,
+                    categoria,
+                    fecha
+                };
+                guardarTransaccion(state);
+            }
 
         },
-        eliminarTransaccion: () => {
+        eliminarTransaccion: (state, action) => {
+            const {id} = action.payload;
+            const transacciones = cargarTransacciones();
             
         },
     },      
 });
 
-export const { agregarTransaccion} = transaccionSlice.actions;
+export const { agregarTransaccion, editarTransaccion, eliminarTransaccion} = transaccionSlice.actions;
 
 export default transaccionSlice.reducer;

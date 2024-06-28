@@ -9,7 +9,7 @@ const Home = () => {
       <h2>Realice sus transacciones aquí</h2>
 
       <FormTransaccion />
-      <CardTransaccion />
+      {/* <CardTransaccion /> */}
     </Container>
   )
 }

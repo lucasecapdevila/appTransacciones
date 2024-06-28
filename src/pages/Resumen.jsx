@@ -1,8 +1,13 @@
-import React from 'react'
 
 const Resumen = () => {
   return (
-    <div>Resumen</div>
+    <div>
+      <h2>Resumen de la cuenta</h2>
+
+      <p>Ingresos totales: </p>
+      <p>Gastos totales: </p>
+      <p>Saldo final: </p>
+    </div>
   )
 }
 

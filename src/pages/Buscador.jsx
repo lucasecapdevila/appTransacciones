@@ -1,8 +1,10 @@
-import React from 'react'
 
 const Buscador = () => {
   return (
-    <div>Buscador</div>
+    <div>
+      <h2>Buscador</h2>
+      
+    </div>
   )
 }
 

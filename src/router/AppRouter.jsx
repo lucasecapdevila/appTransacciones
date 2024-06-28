@@ -3,16 +3,19 @@ import ListaTransacciones from "../pages/ListaTransacciones";
 import Buscador from "../pages/Buscador";
 import Resumen from "../pages/Resumen";
 import Home from "../pages/Home";
+import Menu from "../common/Menu";
 
 const AppRouter = () => {
     return (
        <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/lista" element={<ListaTransacciones />}></Route>
-          <Route path="/buscador" element={<Buscador />}></Route>
-          <Route path="/resumen" element={<Resumen />}></Route>
-        </Routes>
+       <Menu>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/lista" element={<ListaTransacciones />}/>
+            <Route path="/buscador" element={<Buscador />}/>
+            <Route path="/resumen" element={<Resumen />}/>
+          </Routes>
+       </Menu>
        </BrowserRouter>
     );
 };
