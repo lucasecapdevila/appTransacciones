@@ -4,6 +4,7 @@ import Buscador from "../pages/Buscador";
 import Resumen from "../pages/Resumen";
 import Home from "../pages/Home";
 import Menu from "../common/Menu";
+import Footer from "../common/Footer";
 
 const AppRouter = () => {
     return (
@@ -14,7 +15,8 @@ const AppRouter = () => {
             <Route path="/lista" element={<ListaTransacciones />}/>
             <Route path="/buscador" element={<Buscador />}/>
             <Route path="/resumen" element={<Resumen />}/>
-          </Routes>   
+          </Routes>  
+       <Footer/> 
        </BrowserRouter>
     );
 };

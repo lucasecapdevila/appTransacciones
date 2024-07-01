@@ -21,15 +21,17 @@ const transaccionSlice = createSlice({
         },
         
         editarTransaccion: (state, action) => {
-            const {id, descripcion, monto, categoria, fecha} = action.payload;
+            const {id, cuentaOrigen, cuentaDestino, descripcion, monto, categoria, fecha, ingresoOGasto} = action.payload;
             const campo = state.findIndex((transaccion => transaccion.id === id));
             if (campo !== -1){
                 state[campo] = {
                     ...state[campo],
+                    cuentaOrigen,
+                    cuentaDestino,
                     descripcion,
                     monto,
                     categoria,
-                    fecha
+                    fecha, ingresoOGasto
                 };
                 guardarTransaccion(state);
             }

@@ -1,48 +1,45 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { editarTransaccion, eliminarTransaccion } from '../slices/transaccionSlice';
+import { eliminarTransaccion } from '../slices/transaccionSlice';
+import EditTransaccion from '../pages/EditTransaccion';
 
-const CardTransaccion = ({transaccion}) => {
-  
-	const dispatch = useDispatch();
+const CardTransaccion = ({ transaccion }) => {
+    const dispatch = useDispatch();
+    const [editarShow, setEditarShow] = useState(false);
 
-	const handleEditar = (id, descripcion, monto, categoria, fecha) => {
-		dispatch(editarTransaccion({ id, descripcion, monto, categoria, fecha }));
-	};
+    const handleEliminar = (id) => {
+        dispatch(eliminarTransaccion({ id }));
+        window.location.reload();
+    };
 
-  const handleEliminar = (id) => {
-		dispatch(eliminarTransaccion({ id }));
-    window.location.reload();
-	};
+    const handleEdit = () => {
+        setEditarShow(true);
+    };
 
-  return (
-          <tr key={transaccion?.id}>
-            <td>{transaccion?.cuentaOrigen}</td>
-            <td>{transaccion?.cuentaDestino}</td>
-            <td><span>$</span>{transaccion?.monto} </td>
-            <td>{transaccion?.descripcion} </td>
-            <td>{transaccion?.categoria} </td>
-            <td>{transaccion?.fecha} </td>
-            <td>{transaccion?.ingresoOGasto} </td>
-            <td>
-				<button
-					className="btn btn-success"
-					onClick={() => handleEditar(transaccion.id,
-                      transaccion.descripcion, transaccion.monto,
-                      transaccion.categoria, transaccion.fecha)}
-				>
-					Editar
-				</button>
-			</td>
-			<td>
-				<button
-					className="btn btn-danger"
-					onClick={() => handleEliminar(transaccion.id)}
-				>
-					Eliminar
-				</button>
-			</td>
-          </tr>
-  );
+    const handleClose = () => {
+        setEditarShow(false);
+    };
+
+    return (
+        <>
+            <tr key={transaccion?.id}>
+                <td>{transaccion?.cuentaOrigen}</td>
+                <td>{transaccion?.cuentaDestino}</td>
+                <td><span>$</span>{transaccion?.monto}</td>
+                <td>{transaccion?.descripcion}</td>
+                <td>{transaccion?.categoria}</td>
+                <td>{transaccion?.fecha}</td>
+                <td>{transaccion?.ingresoOGasto}</td>
+                <td>
+                    <button className='btn btn-success' onClick={handleEdit}>Editar</button>
+                </td>
+                <td>
+                    <button className="btn btn-danger" onClick={() => handleEliminar(transaccion.id)}>Eliminar</button>
+                </td>
+            </tr>
+            <EditTransaccion show={editarShow} handleClose={handleClose} transaccion={transaccion} />
+        </>
+    );
 };
 
 export default CardTransaccion;
