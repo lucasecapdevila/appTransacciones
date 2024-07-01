@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import CardTransaccion from '../components/CardTransaccion';
@@ -8,24 +7,29 @@ const ListaTransacciones = () => {
 
   return (
     <Container>
-      <Table>
+      <Table responsive>
         <thead>
-          <th>Cuenta origen</th>
-          <th>Cuenta destino</th>
-          <th>Categoría</th>
-          <th>Descripción</th>
-          <th>Fecha</th>
-          <th>Ingreso/Gasto</th>
+          <tr>
+            <th>Cuenta origen</th>
+            <th>Cuenta destino</th>
+            <th>Monto</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Fecha</th>
+            <th>Ingreso/Gasto</th>
+            <th></th>
+            <th></th>
+          </tr>
         </thead>
 
         <tbody>
-          {listaTransacciones.map((transaccion) => {
-            <CardTransacciontransaccion transaccion={transaccion}></CardTransacciontransaccion>
-          })}
+          {listaTransacciones.map((transaccion) => (
+            <CardTransaccion transaccion={transaccion} key={transaccion.id}></CardTransaccion>
+          ))}
         </tbody>
       </Table>
 </Container>
   )
 }
 
-export default ListaTransacciones
+export default ListaTransacciones;

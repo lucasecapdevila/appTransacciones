@@ -8,14 +8,13 @@ import Menu from "../common/Menu";
 const AppRouter = () => {
     return (
        <BrowserRouter>
-       <Menu>
+       <Menu/>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/lista" element={<ListaTransacciones />}/>
             <Route path="/buscador" element={<Buscador />}/>
             <Route path="/resumen" element={<Resumen />}/>
-          </Routes>
-       </Menu>
+          </Routes>   
        </BrowserRouter>
     );
 };

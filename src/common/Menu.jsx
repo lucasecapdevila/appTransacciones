@@ -1,25 +1,31 @@
-import { Navbar } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Menu = () => {
   return (
     <Navbar bg="dark" expand="lg">
-      <Navbar.Brand>
+      <Navbar.Brand className='ms-2'>
         <Link className='nav-link list-unstyled text-white' to='/'>Inicio</Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <ul>
-          <li className="nav-item">
+      <Navbar.Collapse id="basic-navbar-nav" className='light'>
+        <Nav className="ms-auto">
+          <Nav.Item>
+            <Link className='nav-link list-unstyled text-white' to='/'>Transacciones</Link> 
+          </Nav.Item>
+          <Nav.Item>
             <Link className='nav-link list-unstyled text-white' to='/lista'>Lista de Transacciones</Link> 
-          </li>
-          <li className="nav-item">
+          </Nav.Item>
+          <Nav.Item>
             <Link className='nav-link list-unstyled text-white' to='/buscador'>Buscador de Transacciones</Link> 
-          </li>
-        </ul>
+          </Nav.Item>
+          <Nav.Item>
+            <Link className='nav-link list-unstyled text-white' to='/resumen'>Resumen</Link> 
+          </Nav.Item>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   )
 }
 
-export default Menu
+export default Menu;

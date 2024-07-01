@@ -9,9 +9,6 @@ const guardarTransaccion = (transacciones) =>{
     localStorage.setItem("transacciones", JSON.stringify(transacciones))
 };
 
-/*const eliminarTransaccion = (id) => {
-    
-};*/
 
 
 const transaccionSlice = createSlice({
@@ -41,7 +38,8 @@ const transaccionSlice = createSlice({
         eliminarTransaccion: (state, action) => {
             const {id} = action.payload;
             const transacciones = cargarTransacciones();
-            
+            const nuevasTransacciones = transacciones.filter((transaccion) => transaccion.id !== id);
+            guardarTransaccion(nuevasTransacciones);            
         },
     },      
 });
