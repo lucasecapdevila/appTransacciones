@@ -9,7 +9,6 @@ const EditTransaccion = ({ show, handleClose, transaccion }) => {
     const [monto, setMonto] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [categoria, setCategoria] = useState("");
-    const [fecha, setFecha] = useState("");
     const [ingresoOGasto, setIngresoOGasto] = useState("");
    
 
@@ -19,7 +18,6 @@ const EditTransaccion = ({ show, handleClose, transaccion }) => {
         setMonto(transaccion.monto);
         setDescripcion(transaccion.descripcion);
         setCategoria(transaccion.categoria);
-        setFecha(transaccion.fecha);
         setIngresoOGasto(transaccion.ingresoOGasto);
     }, [transaccion]);
 
@@ -29,11 +27,9 @@ const EditTransaccion = ({ show, handleClose, transaccion }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(editarTransaccion({
-            id: transaccion.id,
             descripcion,
             monto,
             categoria,
-            fecha,
             cuentaOrigen,
             cuentaDestino,
             ingresoOGasto
@@ -83,11 +79,6 @@ const EditTransaccion = ({ show, handleClose, transaccion }) => {
                     <Form.Group controlId='descripcion'>
                         <Form.Label>Ingrese una breve descripción</Form.Label>
                         <Form.Control as="textarea" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                    </Form.Group>
-
-                    <Form.Group controlId='fecha'>
-                        <Form.Label>Ingrese la fecha</Form.Label>
-                        <Form.Control type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group controlId='ingresoOGasto'>
