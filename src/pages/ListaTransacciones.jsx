@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import CardTransaccion from '../components/CardTransaccion';
 
 const ListaTransacciones = () => {
-  const listaTransacciones = useSelector((state) => state.transacciones);
+  const listaTransacciones = useSelector((state) => state.transacciones.transacciones);
+  console.log(listaTransacciones);
 
   return (
     <Container>

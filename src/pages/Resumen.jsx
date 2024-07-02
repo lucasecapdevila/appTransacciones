@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap"
 import { useSelector } from "react-redux"
 
 const Resumen = () => {
-  const listaTransacciones = useSelector((state) => state.transacciones)
+  const listaTransacciones = useSelector((state) => state.transacciones.transacciones)
 
   let ingresosTotales = 0
   let gastosTotales = 0

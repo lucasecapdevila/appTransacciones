@@ -74,12 +74,12 @@ const FormTransaccion = () => {
                 <Form.Label>Ingrese categoría</Form.Label>
                 <Form.Select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
                     <option value="" disabled>Elija una categoría</option>
-                    <option value="sinCategoría">Sin categoría</option>
-                    <option value="alimentosBebidas">Alimentos/Bebidas</option>
-                    <option value="entretenimiento">Entretenimiento</option>
-                    <option value="servicios">Servicios</option>
-                    <option value="supermercado">Supermercado</option>
-                    <option value="transporte">Transporte</option>
+                    <option value="Sin categoría">Sin categoría</option>
+                    <option value="Alimentos/Bebidas">Alimentos/Bebidas</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Servicios">Servicios</option>
+                    <option value="Supermercado">Supermercado</option>
+                    <option value="Transporte">Transporte</option>
                 </Form.Select>
             </Form.Group>
 
