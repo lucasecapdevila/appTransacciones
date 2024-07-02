@@ -1,10 +1,10 @@
+import { Container } from "react-bootstrap"
 
 const Buscador = () => {
   return (
-    <div>
+    <Container>
       <h2>Buscador</h2>
-      
-    </div>
+    </Container>
   )
 }
 

@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap"
 import { useSelector } from "react-redux"
 
 const Resumen = () => {
@@ -16,13 +17,13 @@ const Resumen = () => {
   })
 
   return (
-    <div>
+    <Container>
       <h2>Resumen de la cuenta</h2>
 
       <p>Ingresos totales: {ingresosTotales}</p>
       <p>Gastos totales: {gastosTotales}</p>
       <p>Saldo final: {ingresosTotales - gastosTotales}</p>
-    </div>
+    </Container>
   )
 }
 
