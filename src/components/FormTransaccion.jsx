@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { agregarTransaccion } from "../slices/transaccionSlice";
@@ -6,14 +5,6 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const FormTransaccion = () => {
-  //   const [cuentaOrigen, setCuentaOrigen] = useState("");
-  //   const [cuentaDestino, setCuentaDestino] = useState("");
-  //   const [monto, setMonto] = useState("");
-  //   const [descripcion, setDescripcion] = useState("");
-  //   const [categoria, setCategoria] = useState("");
-  //   const [fecha, setFecha] = useState("");
-  //   const [ingresoOGasto, setIngresoOGasto] = useState("");
-
   const {
     register,
     handleSubmit,
@@ -24,13 +15,6 @@ const FormTransaccion = () => {
   const dispatch = useDispatch();
 
   const handleTransacciones = (transaccion) => {
-    // e.preventDefault();
-
-    // if (!cuentaOrigen || !monto || !categoria || !fecha || !ingresoOGasto) {
-    //   alert("Por favor complete todos los campos requeridos.");
-    //   return;
-    // }
-
     const nuevaTransaccion = {
       id: Math.floor(Math.random() * 1000),
       ...transaccion,
@@ -38,22 +22,12 @@ const FormTransaccion = () => {
 
     dispatch(agregarTransaccion(nuevaTransaccion));
 
-    // setCuentaOrigen("");
-    // setCuentaDestino("");
-    // setMonto("");
-    // setDescripcion("");
-    // setCategoria("");
-    // setFecha("");
-    // setIngresoOGasto("");
-
     Swal.fire({
       title: "Transacción realizada",
       icon: "success",
     });
 
     reset()
-
-    // alert("Transaccion realizada exitosamente.");
   };
 
   return (
@@ -61,8 +35,6 @@ const FormTransaccion = () => {
       <Form.Group controlId="cuentaOrigen">
         <Form.Label>Seleccione cuenta de origen</Form.Label>
         <Form.Select
-          //   value={cuentaOrigen}
-          //   onChange={(e) => setCuentaOrigen(e.target.value)}
           {...register("cuentaOrigen", {
             required: "Seleccione una cuenta de origen",
           })}
@@ -82,8 +54,6 @@ const FormTransaccion = () => {
         <Form.Label>Ingrese CBU/Alias</Form.Label>
         <Form.Control
           type="text"
-          //   value={cuentaDestino}
-          //   onChange={(e) => setCuentaDestino(e.target.value)}
           {...register("cuentaDestino", {
             required: "La cuenta destino es obligatoria",
             minLength: {
@@ -105,8 +75,6 @@ const FormTransaccion = () => {
         <Form.Label>Ingrese monto a transferir</Form.Label>
         <Form.Control
           type="number"
-          //   value={monto}
-          //   onChange={(e) => setMonto(e.target.value)}
           {...register("monto", {
             required: "El monto es obligatorio",
             min: {
@@ -125,8 +93,6 @@ const FormTransaccion = () => {
       <Form.Group controlId="categoria">
         <Form.Label>Ingrese categoría</Form.Label>
         <Form.Select
-          //   value={categoria}
-          //   onChange={(e) => setCategoria(e.target.value)}
           {...register("categoria", {
             required: "Seleccione una categoría",
           })}
@@ -150,8 +116,6 @@ const FormTransaccion = () => {
         <Form.Label>Ingrese una breve descripción</Form.Label>
         <Form.Control
           as="textarea"
-          //   value={descripcion}
-          //   onChange={(e) => setDescripcion(e.target.value)}
           {...register("descripcion", {
             required: "La descripción es obligatoria",
             minLength: {
@@ -173,8 +137,6 @@ const FormTransaccion = () => {
         <Form.Label>Ingrese la fecha</Form.Label>
         <Form.Control
           type="date"
-          //   value={fecha}
-          //   onChange={(e) => setFecha(e.target.value)}
           {...register("fecha", {
             required: "La fecha es obligatoria",
           })}
@@ -187,8 +149,6 @@ const FormTransaccion = () => {
           Indique si la operación es un ingreso o un gasto
         </Form.Label>
         <Form.Select
-          //   value={ingresoOGasto}
-          //   onChange={(e) => setIngresoOGasto(e.target.value)}
           {...register("ingresoOGasto", {
             required: "Seleccione si es ingreo o gasto",
           })}
